@@ -28,7 +28,7 @@ def image_predict():
 
 def get_prediction_image(image64):
     model = __load_model()
-    img = __prepocess_img(image64)
+    img = __preprocess_img(image64)
     img_array = tf.keras.utils.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0)  # Create a batch
     predictions = model.predict(img_array)
@@ -47,7 +47,7 @@ def get_prediction_image(image64):
     return data
 
 
-def __prepocess_img(image64):
+def __preprocess_img(image64):
     image = base64.b64decode(image64)
     image = Image.open(io.BytesIO(image))
     image = image.resize((180, 180), Image.ANTIALIAS).convert('RGB')
