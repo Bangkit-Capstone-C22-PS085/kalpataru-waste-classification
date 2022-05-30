@@ -1,3 +1,4 @@
 .ipynb_checkpoints
 api-services-model/__pycache__
 .vscode
+api-services-model/model_ml/trash-xception.h5
