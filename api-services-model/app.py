@@ -23,7 +23,7 @@ def image_predict():
         except KeyError:
             data['status'] = 'error'
 
-    return data
+    return jsonify(data)
 
 
 def get_prediction_image(image64):
