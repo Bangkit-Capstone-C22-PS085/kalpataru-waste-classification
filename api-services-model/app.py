@@ -57,7 +57,7 @@ def __preprocess_img(image64):
 def __load_model():
     # change the path according to the environment
     model_dir = os.path.join(os.getcwd(), 'api-services-model', 'model_ml')
-    model_name = 'trash-classification.h5'
+    model_name = 'trash-xception.h5'
     model_path = os.path.join(model_dir, model_name)
     model = tf.keras.models.load_model(model_path)
     return model
