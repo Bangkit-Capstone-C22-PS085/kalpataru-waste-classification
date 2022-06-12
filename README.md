@@ -22,7 +22,7 @@ In this project we created a machine learning that is used to detect a waste and
 <br>Then we also give some decisions for the results by showing the accuracy of the predictions.
 
 ## Our Infrastructure
-![Machine Learning Infrastructure](https://raw.githubusercontent.com/Bangkit-Capstone-C22-PS085/kalpataru-waste-classification/master/infrastructure.png)
+![Machine Learning Infrastructure](https://raw.githubusercontent.com/Bangkit-Capstone-C22-PS085/kalpataru-waste-classification/master/assets/infrastructure.png)
 
 ## Our Import Library on Project
 For development you must install several import in your local computer (on Jupyter Notebook) or you can run on Google Colaboratory:
