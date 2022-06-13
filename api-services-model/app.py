@@ -9,7 +9,7 @@ from flask import Flask, request, jsonify
 from PIL import Image
 
 app = Flask(__name__)
-CLASS_NAMES = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
+CLASS_NAMES = ['cardboard', 'glass', 'metal', 'paper', 'plastic']
 
 
 @app.route('/api/predict/', methods=['GET', 'POST'])
@@ -23,6 +23,14 @@ def image_predict():
         except KeyError:
             data['status'] = 'error'
 
+    return jsonify(data)
+
+
+@app.errorhandler(404)
+def not_found_url(e):
+    data = dict()
+    data['status'] = 'error'
+    data['message'] = 'endpoint not found'
     return jsonify(data)
 
 
@@ -50,14 +58,14 @@ def get_prediction_image(image64):
 def __preprocess_img(image64):
     image = base64.b64decode(image64)
     image = Image.open(io.BytesIO(image))
-    image = image.resize((180, 180), Image.ANTIALIAS).convert('RGB')
+    image = image.resize((256, 256), Image.ANTIALIAS).convert('RGB')
     return image
 
 
 def __load_model():
     # change the path according to the environment
     model_dir = os.path.join(os.getcwd(), 'api-services-model', 'model_ml')
-    model_name = 'trash-xception.h5'
+    model_name = 'model.h5'
     model_path = os.path.join(model_dir, model_name)
     model = tf.keras.models.load_model(model_path)
     return model
